@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Every even number is sum of two prime numbers. Goldbach's conjecture. Goldbach's partitions" />
+    <title>Goldbach's conjecture| Every even number is sum of two primes.</title>
+    <script src="script.js" type="text/javascript" async></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Goldbach's conjecture</h1>
+    <h3>Every even number is sum of two odd primes</h3>
+    <hr>
+    <div>
+        <p>Please enter an even number greater than 2
+            in the below box and hit enter.</p>
+        <input id="nbr" type="number" min="4" step="2" />
+    </div>
+    <div id="loading">
+        <img src="loading.gif" alt="Loading...">
+    </div>
+    <div id="resultdiv">
+        <p>Goldbach's partitions (At max 100 partitions are shown): </p>
+        <ul id="result"></ul>
+    </div>
+</body>
+
+</html>
