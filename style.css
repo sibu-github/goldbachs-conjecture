@@ -35,3 +35,10 @@ body > div > p {
 ul li {
   font-size: 24px;
 }
+
+div#error {
+  color: #f00;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}

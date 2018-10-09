@@ -6,6 +6,7 @@ const inputElement = document.getElementById("nbr");
 const resultElement = document.getElementById("result");
 const loadingDiv = document.getElementById("loading");
 const resultDiv = document.getElementById("resultdiv");
+const errorDiv = document.getElementById("error");
 
 // checks if a given number is prime
 const isPrime = n => {
@@ -25,6 +26,12 @@ const getPrimePartition = n => {
 
   //   if n is odd then return blank
   if (n % 2 !== 0) {
+    return allPatitions;
+  }
+
+  // handle trivial case for n = 4
+  if (n === 4) {
+    allPatitions.push(`(${2}, ${2})`);
     return allPatitions;
   }
 
@@ -69,12 +76,20 @@ const clearPreviousResults = () => {
 const showLoading = () => {
   loadingDiv.style.display = "block";
   resultDiv.style.display = "none";
+  errorDiv.style.display = "none";
 };
 
 // hide the loading indicator when result obtained
 const hideLoading = () => {
   loadingDiv.style.display = "none";
   resultDiv.style.display = "block";
+};
+
+// show input error
+const showError = () => {
+  loadingDiv.style.display = "none";
+  resultDiv.style.display = "none";
+  errorDiv.style.display = "block";
 };
 
 // calculate the result for the given input
@@ -91,10 +106,17 @@ const calculate = n => {
 const onKeyUp = ({ keyCode }) => {
   // we don't care if it is not the ENTER key
   if (keyCode !== 13) return;
-  const v = inputElement.value;
+  let v = inputElement.value;
 
   // exit if somehow a non number input is provided
   if (!Number(v)) return;
+  v = Number(v);
+
+  // show error for wrong input
+  if (v % 2 !== 0 || v < 4) {
+    showError();
+    return;
+  }
 
   // show loading indicator before starting the calculation
   // which might take some time depending on how big the input is
@@ -114,6 +136,7 @@ const onLoad = () => {
   inputElement.value = "";
   hideLoading();
   resultDiv.style.display = "none";
+  errorDiv.style.display = "none";
 };
 
 // attach onkeyup listener to it
